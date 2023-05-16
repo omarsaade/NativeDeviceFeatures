@@ -1,12 +1,38 @@
-// import React from 'react';
-// import {View, Text} from 'react-native';
+import React from 'react';
+import {StatusBar} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import AllPlaces from './screens/AllPlaces';
+import AddPlace from './screens/AddPlace';
+import IconButton from './components/UI/IconButton';
 
-// const App = () => {
-//   return (
-//     <View>
-//       <Text>Hello</Text>
-//     </View>
-//   );
-// };
+const Stack = createNativeStackNavigator();
 
-// export default App;
+const App = () => {
+  return (
+    <>
+      <StatusBar style="dark" />
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="AllPlaces"
+            component={AllPlaces}
+            options={({navigation}) => ({
+              headerRight: ({tintColor}) => (
+                <IconButton
+                  icon="add"
+                  size={24}
+                  color={tintColor}
+                  onPress={() => navigation.navigate('AddPlace')}
+                />
+              ),
+            })}
+          />
+          <Stack.Screen name="AddPlace" component={AddPlace} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
+  );
+};
+
+export default App;

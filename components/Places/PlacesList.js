@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList, View, StyleSheet, Text} from 'react-native';
 import PlaceItem from './PlaceItem';
 
 const PlacesList = ({places}) => {
